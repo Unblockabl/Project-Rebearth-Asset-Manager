@@ -5,7 +5,7 @@ import os
 import zipfile
 import time
 
-help_domain = "https://unblockabl.github.io/projectrebearthassetmanager"
+help_domain = "https://unblockabl.github.io/Project-Rebearth-Asset-Manager/"
 
 def main():
 
