@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to use Project Rebearth Asset Manager</title>
+    <style>
+        code {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            display: block;
+            margin-bottom: 10px;
+        }
+        img {
+            width: 100%;
+            max-width: 500px;
+            margin-top: 20px;
+            border-radius: 5px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            color: #333;
+            font-family: Arial, Helvetica, sans-serif, sans-serif;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        p {
+            margin: 10px;
+        }
+
+        form {
+            text-align: center;
+        }
+
+        button {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>How to use <a href="./" style="text-decoration: underline; color: #000;">Project Rebearth Asset Manager</a></h1></h1>
+    <button>Download</button>
+    <p>Project Rebearth Asset Manager is a tool to create and use 'Resource Packs'. You can upload your assets in a zip file and it will be converted to a "Resource Pack Code". You can then copy the code and enter it into the asset manager available for download at <a href="./download.html">/download.html</a></p>
+    <br>
+    <p>Here is an example of how to structure your assets:</p>
+    <code>        
+        Assets<br>
+         |<br>
+         +-- images<br>
+         |  |  <br>
+         |  +-- food.png<br>
+         |  +-- wood.png<br>
+         |  \-- clothes.png<br>
+         ...
+    </code>
+    <p>Zip the contents of the 'Assets' folder (do <b>NOT</b> include the folder named 'Assets', just inside) and upload it below then press submit. The Resource Pack Code will be copied to your clipboard and you can share or use it yourself!</p>
+    <form id="form">
+        <input type="file" id="file" name="file" accept=".zip">
+        <input type="submit" value="Submit">
+    </form>
+    <br><br>
+    <img src="img.png" alt="Picture of Project Rebearth Asset Manager">
+
+    <script>
+        document.getElementById('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const file = document.getElementById('file').files[0];
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const base64 = e.target.result;
+                const base64Data = base64.split(',')[1];
+                console.log(base64Data);
+                copyToClipboard(base64Data);
+            }
+            reader.readAsDataURL(file);
+        });
+
+        document.querySelector('button').addEventListener('click', function() {
+            window.location.href = './download.html';
+        });
+
+        function copyToClipboard(text) {
+            const input = document.createElement('input');
+            input.value = text;
+            document.body.appendChild(input);
+            input.select();
+            document.execCommand('copy');
+            document.body.removeChild(input);
+            alert('Copied to clipboard');
+        }
+    </script>
+</body>
+</html>
