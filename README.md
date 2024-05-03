@@ -1,1 +1,1 @@
-Welcome! Check the [github pages site](https://unblockabl.github.io/Project-Rebearth-Asset-Manager) for the latest release and more information
+Welcome! Check the [github pages site](https://unblockabl.github.io/Project-Rebearth-Asset-Manager) for more information. To download, check the releases tab on the right or download and run the python script ('asset_manager.py') in the same directory as the ProjectRebearthGame.exe file. Required pip extensions are tkinter,time,os,base64,zipfile.
